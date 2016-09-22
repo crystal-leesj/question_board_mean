@@ -1,0 +1,22 @@
+<h4>{{username}} is logged in</h4>
+<button type="button" ng-click='logout()'>Logout</button>
+<hr>
+<a href={{'#/'}}>Home</a>
+<a href={{'#question/'+question._id}}>Go Back to Question</a>
+<hr>
+
+<h4>{{question.question}}</h4>
+<p>{{question.description}}</p>
+
+<form name="answerFrom">
+  Answer: <input type="text" name='answer' ng-model='new_answer.answer' ng-minlength='5' required >
+  <div ng-messages="answerFrom.answer.$error" ng-show="answerFrom.answer.$touched">
+    <p ng-message="minlength">The answer is too short.</p>
+    <p ng-message="required">The answer is required.</p>
+  </div>
+
+  Supporting details for your answer (optional):
+  <input type="text" ng-model='new_answer.detail'>
+  <input type="button" value="Cancel" ng-click="goBack()">
+  <input type="submit" value="Submit" ng-click='postAnswer(userId, question._id, new_answer)'>
+</form>

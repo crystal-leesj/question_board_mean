@@ -1,0 +1,44 @@
+<h4>Registraion</h4>
+<form ng-model = "registration" name="registerForm" ng-submit="userRegister()">
+  <p>First Name: <input type="text" name="first_name" ng-model='registration.first_name' ng-minlength='3' required></p>
+  <div ng-messages="registerForm.first_name.$error" ng-show="registerForm.first_name.$touched">
+    <p ng-message="minlength">The first name is too short.</p>
+    <p ng-message="required">The first name is required.</p>
+  </div>
+
+  <p>Last Name: <input type="text" name="last_name" ng-model='registration.last_name' ng-minlength='3' required></p>
+  <div ng-messages="registerForm.last_name.$error" ng-show="registerForm.last_name.$touched">
+    <p ng-message="minlength">The last name is too short.</p>
+    <p ng-message="required">The last name is required.</p>
+  </div>
+
+  <p>Email: <input type="text" name="email" ng-model='registration.email' required></p>
+  {{message}}
+  <div ng-messages="registerForm.email.$error" ng-show="registerForm.email.$touched">
+    <p ng-message="required">The email is required.</p>
+  </div>
+
+  <p>Password: <input type="password" name="password" ng-model='registration.password' ng-minlength='3' required></p>
+  <div ng-messages="registerForm.password.$error" ng-show="registerForm.password.$touched">
+    <p ng-message="minlength">The password is too short.</p>
+    <p ng-message="required">The password is required.</p>
+  </div>
+
+  <p>Confirm Password: <input type="password" name="confirm_password" ng-model='registration.confirm_password'></p>
+  <span ng-show="registration.password !== registration.confirm_password">Password mismatch!</span>
+
+  <p>Birthday: <input type="date" ng-model='registration.birthday' required></p>
+  <div ng-messages="registerForm.birthday.$error">
+    <p ng-message="required">The birthday is required.</p>
+  </div>
+
+  <input type="submit" value="register">
+</form>
+
+<h4>Login</h4>
+<form ng-model = "login" ng-submit = "userLogin()">
+  <p>Email: <input type="text" ng-model='login.email'></p>
+  <p>Password: <input type="password" ng-model='login.password'></p>
+  {{message}}
+  <input type="submit" value="login">
+</form>
